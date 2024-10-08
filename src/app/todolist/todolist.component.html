@@ -1,0 +1,62 @@
+
+<div class="container">
+    
+    
+    <h1>To-Do Application</h1>
+    <hr>
+
+    <form (ngSubmit)="onSubmit(taskForm)" #taskForm="ngForm">
+        <div class="mb-3">
+          
+          <input type="text" class="form-control" id="task" placeholder="Enter task" ngModel name="task" required><br>
+          <input type="text" class="form-control" id="description" placeholder="Enter description" ngModel name="description" required>
+          <div *ngIf="taskForm.invalid && taskForm.dirty" id="errorMessage" class="form-text text-danger">Required field</div>
+        </div>
+        
+        <button
+        [disabled] ="taskForm.invalid"
+        id="submitButton" type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+      <hr>
+
+      <table class="table">
+        <thead>
+          <tr >
+            <th scope="col">Task</th>
+            <th scope="col">Description</th>
+            <th scope="col">Date</th>
+            <th scope="col">Completed</th>
+            <th scope="col">Delete</th>
+            <th scope="col">Edit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let t of taskArray; index as i">
+            <td>{{t.taskName}}</td>
+            <td>{{t.taskDescription}}</td>
+            <!-- Date formatted as MM/dd/yyyy -->
+            <input type="date">
+            <td><input (change)="onCheck(i)" id="myCheckbox" type="checkbox"></td>
+            <td><button class="btn btn-danger btn-sm" (click)="onDelete(i)">Delete</button></td>
+
+            <td >
+                <button class="btn btn-warning btn-sm" (click)="onEdit(i)">Edit</button>
+              </td>
+            
+          </tbody>
+      <!--<ul>
+          <li *ngFor="let task of taskArray; let i = index">
+           <input
+              type="checkbox"
+              [checked]="task.isCompleted"
+              
+            />
+            {{ task.taskName }}
+            <button mat-button (click)="editTask(task)">Edit</button>
+          </li>
+        </ul>-->
+      </table>
+    
+</div>
+

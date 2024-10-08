@@ -1,0 +1,19 @@
+
+<div class="container">
+    <h2 mat-dialog-title>Edit Task</h2>
+  <div class="content">
+    <mat-form-field>
+      <mat-label>Task Name</mat-label>
+      <input matInput [(ngModel)]="data.taskName" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Task Description</mat-label>
+      <input matInput [(ngModel)]="data.taskDescription" />
+   </mat-form-field>
+  </div>
+  <div class="button">
+    <button mat-button (click)="onNoClick()">Cancel</button>
+    <button mat-button (click)="onSave()">Save</button>
+  </div>
+</div>
+
